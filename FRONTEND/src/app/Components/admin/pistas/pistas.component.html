@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+
+
+<div class="container">
+ 
+    <h1 class="mt-5">PISTAS</h1>
+   
+    <div class="row d-flex justify-content-between" *ngIf="pistas.length==0">
+
+        <div class="col mt-5">
+            <h3>No hay pistas</h3>
+        </div>
+        <div class="col mt-5 d-flex justify-content-end">
+            <button type="button" class="btn btn-success classButton" (click)="nuevaPista()">Nueva pista</button>
+        </div>
+
+    </div>
+    
+    <div class="responsive">
+    <table *ngIf="pistas.length>0" class="table table-hover text-center mt-5">
+        <thead>
+            <tr>
+              <th scope="col">Nombre de la pista</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Deporte</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Acciones</th>
+              <th scope="col"><button type="button" class="btn btn-success classButton" (click)="nuevaPista()">Nueva pista</button></th>
+            </tr>
+        </thead>
+
+        <tbody  *ngFor="let item of pistas | paginate: { itemsPerPage: 3, currentPage: p }">
+
+            <tr  *ngIf="true">
+                
+                <td >{{item.nombrePista}}</td>
+                <td>{{item.descripcion}}</td>
+                <td>{{item.deporte}}</td>
+                <td>{{item.precio | currency:'EUR':'symbol-narrow'}} </td>
+
+                <td><button class="btn btn-primary me-3 classButton" (click)="updatePista(item.idPista)">Editar</button>  <button class="btn btn-danger classButton" (click)="deletePista(item.idPista)">Borrar</button></td>
+                <td></td>
+            
+            </tr>
+    
+
+        </tbody>
+    
+    
+    
+    </table>
+</div>
+    <pagination-controls *ngIf="pistas.length>0" previousLabel="Anterior"
+        nextLabel="Siguiente" (pageChange)="p = $event"></pagination-controls>
+
+</div>
+
+<div class="error">
+    <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error:</strong> La pista está alquilada
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+
+
+

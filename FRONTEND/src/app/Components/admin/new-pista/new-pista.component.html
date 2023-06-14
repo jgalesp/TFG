@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+
+    <div class="container">
+
+        <div class="row mt-5">
+
+            <div class="col-12 d-flex justify-content-center">
+
+
+                <form (submit)="submit()">
+    
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" aceholder="Username" [(ngModel)] = "nombrePista" name="nombrePista" aria-describedby="basic-addon1">
+                        <span class="input-group-text" id="basic-addon1">Nombre de la pista</span>
+                    </div>
+    
+                    <div class="input-group mb-3">
+                        <textarea class="form-control" aria-label="With textarea" [(ngModel)] = "descripcion" name="descripcion"></textarea>
+                        <span class="input-group-text">Descripción</span>
+                    </div>
+    
+                    <div>
+                        <select class="form-select mb-3" [(ngModel)] = "deporte" name="deporte" aria-label="Default select example">
+                            <option value="" disabled>Seleccione un deporte...</option>
+                            <option value="Fútbol">Fútbol</option>
+                            <option value="Natación">Natación</option>
+                            <option value="Pádel">Pádel</option>  
+                        </select>
+                    </div>
+    
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" [(ngModel)] = "precio" name="precio">
+                        <span class="input-group-text">€</span>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mb-3 classButton">Agregar</button>
+    
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="error " *ngIf="error">
+        <div  class="alert alert-danger alert-dismissible fade show" role="error">
+            <p>Rellene todos los campos</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="errorFalse()"></button>
+        </div>
+    </div>
+

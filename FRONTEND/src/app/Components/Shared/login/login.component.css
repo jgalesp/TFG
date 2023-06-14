@@ -1,0 +1,27 @@
+
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;   
+}
+
+.bodyLogin{
+    background-color: rgb(227, 227, 227);
+}
+
+.ref{
+    color: rgb(243, 111, 63);
+}
+
+.botonLogin{
+    background-color: rgb(243, 111, 63);
+}
+
+.error{
+    
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1%;   
+}

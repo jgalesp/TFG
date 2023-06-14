@@ -1,0 +1,83 @@
+.navTop{
+    background-color: rgb(48, 47, 47);
+    color: white;
+}
+
+.logoCentro{
+    width: 20%;
+    height: 20%;
+}
+
+.logoLogOut{
+    width: 8%;
+    height: 8%;
+    color: white;
+}
+
+.navDown{
+    background-color: rgb(153, 153, 153);
+    width: 100%;  
+    border-bottom: 4px solid rgb(243, 111, 63);
+}
+
+.texto{
+    color: rgb(255, 255, 255);
+}
+.nav-link{
+display: inline-block;
+}
+.error{
+    
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1%;   
+}
+
+
+@media (max-width: 425px) {
+    .logoCentro{
+        width: 50%;
+        height: 50%;
+    }
+    .logoLogOut{
+        width: 25%;
+        height: 25%;
+        color: white;
+    }
+    .textoCentro{
+        font-size: 2vh;
+    }
+
+    .texto{
+        color: rgb(255, 255, 255);
+        font-size: 15px;
+    }
+    
+}
+
+
+@media (min-width:426px) and (max-width: 768px) {
+    .logoCentro{
+        width: 40%;
+        height: 40%;
+    }
+    .logoLogOut{
+        width: 20%;
+        height: 20%;
+        color: white;
+    }
+    .textoCentro{
+        font-size: 2vh;
+    }
+
+    .margin{
+        margin: 0;
+    }
+
+    .texto{
+        color: rgb(255, 255, 255);
+        font-size: 15px;
+    }
+    
+}

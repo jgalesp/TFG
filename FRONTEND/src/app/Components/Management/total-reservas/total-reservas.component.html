@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+<div class="container">
+ 
+    <h1 class="mt-5">RESERVAS</h1>
+    
+
+    <div class="col-4 ">
+        <span class="m-1"><b>Filtrar por fecha:</b></span> <input  type="date" [min]="minDate" class="form-control" [(ngModel)]="fecha" (change)="cambioFechas()"  name="fecha">
+        <span><b>Filtrar por tipo de reserva:</b></span>
+        <div class="form-check form-switch m-1">
+            <input class="form-check-input" type="checkbox" (change)="cambioFechas()" [(ngModel)]="mantenimiento" name="mantenimiento" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Mantenimiento</label>
+        </div>
+        <div class="form-check form-switch m-1">
+            <input class="form-check-input" type="checkbox" (change)="cambioFechas()" [(ngModel)]="socios" name="socio" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Socios</label>
+        </div>
+    </div>
+
+    
+    <h3 *ngIf="reservasBackup.length==0" class="mt-5">No hay reservas</h3>
+   
+    <div class="responsive">
+    <table *ngIf="reservasBackup.length>0" class="table table-hover text-center mt-5">
+        <thead>
+            <tr>
+              <th scope="col">Nombre de la pista</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Deporte</th>
+              
+              <th scope="col">Fecha de Inicio</th>
+              <th scope="col">Hora de Inicio</th>
+             
+            </tr>
+        </thead>
+
+        <tbody  *ngFor="let item of reservasBackup | paginate: { itemsPerPage: 3, currentPage: p }">
+
+            <tr>
+                
+                <td >{{item.pkPistasAlquiladas.pista.nombrePista}}</td>
+                <td>{{item.pkPistasAlquiladas.pista.descripcion}}</td>
+                <td>{{item.pkPistasAlquiladas.pista.deporte}}</td>
+                <td>{{item.pkPistasAlquiladas.fechaInicio | date: 'dd/MM/yyyy'}}</td>
+                <td>{{item.pkPistasAlquiladas.fechaInicio | date:'HH:mm' }}</td>
+            
+            </tr>
+    
+
+        </tbody>
+        
+        
+           
+        
+    
+    </table>
+        <pagination-controls *ngIf="reservasBackup.length>0" previousLabel="Anterior"
+        nextLabel="Siguiente" (pageChange)="p = $event"></pagination-controls>
+</div>
+
+    
+
+</div>

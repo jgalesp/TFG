@@ -1,0 +1,16 @@
+
+  html, body {
+  margin: 0;
+  background-color: rgb(240, 239, 239); 
+  display: grid;
+  width: 100%;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+  }
+
+  
+  
+  
+
+
+

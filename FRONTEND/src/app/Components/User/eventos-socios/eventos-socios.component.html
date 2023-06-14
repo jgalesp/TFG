@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+
+
+<div class="container">
+
+  <h1 class="mt-5">ACTIVIDADES</h1>
+
+    <h3 class="mt-5" *ngIf="eventos.length==0">No hay actividades</h3>
+
+    <div  class="row" *ngIf="eventos.length>0" >
+
+        <div class="col-4" *ngFor="let evento of eventos ">
+            
+            <div class="card m-3" style="width: 18rem;">
+              <div [ngSwitch]="evento.deporte">
+                <ng-container *ngSwitchCase="'Futbol'"><img src="assets\images\Campo-de-fútbol-7-El-Parque.jpg" class="card-img-top" alt="Campo de fútbol"></ng-container>
+                <ng-container *ngSwitchCase="'Natacion'"><img src="assets\images\Piscina_verano_Colmenar_Viejo_2021_4.jpeg" class="card-img-top" alt="Piscina"></ng-container>
+                <ng-container *ngSwitchCase="'Padel'"><img src="assets\images\Construccion-pistas-padel-Espana.jpg" class="card-img-top" alt="Pista de pádel"></ng-container>
+              </div>
+                
+                <div class="card-body">
+                  <h5 class="card-title">{{ evento.nombreEvento }}</h5>
+                  <p class="card-text">Disfruta de esta actividad desde el <b>{{ evento.fechaInicio | date: 'dd/MM/yyyy' }}</b> hasta el <b>{{evento.fechaFin | date: 'dd/MM/yyyy'}}</b></p>
+                  <p class="card-text">Todos los <b>{{ evento.dia }}</b> a las <b>{{evento.hora}}:00</b></p>
+                  
+                    <button type="button" *ngIf="evento.inscrito" disabled class="btn btn-danger">Inscrito</button>
+                    <button type="button" *ngIf="!evento.inscrito" (click)="inscEvento(evento.idEvento)" class="btn btn-primary classButton">Inscribirse</button>
+                
+              </div>
+              </div>
+
+
+        </div>
+
+    </div>
+
+</div>

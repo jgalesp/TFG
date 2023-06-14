@@ -1,0 +1,125 @@
+
+
+<div class="container-fluid ">
+    <div class="row navTop d-flex align-items-center" >
+
+        <div class=" col-4 text-center my-2"><img type="button" src="assets\images\logoCentro.png" (click)="goToDashboard()" class="logoCentro"  alt="Logo del centro deportivo"></div>
+        <div class=" col-4 text-center textoCentro">CENTRO DEPORTIVO HERMANOS MACHADO</div>
+        <div class=" col-4 text-center"><img type="button" src="assets\images\flecha.png" (click)="logout()" class="logoLogOut" alt="Logo de cierre de sesión"></div>
+
+</div>
+
+
+
+</div>
+
+<nav class="navbar navbar-expand-md bg-body-tertiary p-0 ">
+  <div class="container-fluid navDown p-0">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      
+       <div class="navbar-nav text-center d-flex justify-content-center ">
+          <div *ngIf="admin" class= " nav-item col-md-3 col-3  text-center my-2"><a type="button" class="nav-link margin texto mx-5" (click)="goTo($event)" data-destino="solicitudes">SOLICITUDES</a></div>        
+     
+          <div *ngIf="admin" class=" nav-item col-md-3 col-3 text-center my-2"><a type="button" class="nav-link margin texto mx-5" (click)="goTo($event)" data-destino="pista">PISTAS</a></div>
+       
+          <div *ngIf="admin" class="nav-item col-md-3 col-3 text-center my-2"><a type="button" class="nav-link margin texto mx-5" (click)="goTo($event)" data-destino="usuario">USUARIOS</a></div>
+      
+          <div *ngIf="admin" class="nav-item col-md-3 col-3 text-center my-2"><a type="button" class="nav-link margin texto mx-5" (click)="goTo($event)" data-destino="eventos">ACTIVIDADES</a></div>
+       
+
+          <div *ngIf="user" class="col-4 nav-item text-center my-2"><a type="button" class="nav-link margin texto mx-5"  (click)="goTo($event)" data-destino="reservar">RESERVAR</a></div>
+        
+          <div *ngIf="user" class=" col-4 nav-item text-center my-2"><a type="button" class="nav-link margin texto mx-5" (click)="goTo($event)" data-destino="misReservas">MIS RESERVAS</a></div>
+        
+          <div *ngIf="user" class=" col-4 nav-item text-center my-2"><a type="button" class="nav-link margin texto mx-5" (click)="goTo($event)" data-destino="misEventos">ACTIVIDADES</a></div>
+       
+          <div *ngIf="user" class=" col-4 nav-item text-center my-2"><button class="btn texto nav-link mx-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">EDITAR</button></div>
+       
+          <div *ngIf="management" class="col-md-4 col-4 nav-item text-center my-2"><a type="button" class="nav-link mx-5  texto" (click)="goTo($event)" data-destino="totalReservas">RESERVAS</a></div>
+        
+          <div *ngIf="management" class="col-md-4 col-4 nav-item text-center my-2"><a type="button" class="nav-link mx-5 texto" (click)="goTo($event)" data-destino="mantenimiento">RESERVAR MANTENIMIENTO</a></div>
+       
+          <div *ngIf="management" class="col-md-4 col-4 nav-item text-center my-2"><a type="button" class="nav-link mx-5 texto" (click)="goTo($event)" data-destino="incidencias">INCIDENCIAS</a></div>
+        
+        </div>
+        
+      
+    </div>
+  </div>
+</nav>
+
+
+
+
+<div *ngIf="datosUser" class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <h3 class="offcanvas-title mt-5" id="offcanvasScrollingLabel">EDITAR USUARIO</h3>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" disabled  [(ngModel)] = "datosUser.dni" name="dni" aria-describedby="basic-addon1">
+      <span class="input-group-text" id="basic-addon1">D.N.I</span>
+    </div>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" aceholder="Username"  [(ngModel)] = "datosUser.nombre" name="nombre" aria-describedby="basic-addon1">
+      <span class="input-group-text" id="basic-addon1">Nombre</span>
+    </div>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" aceholder="Username"  [(ngModel)] = "datosUser.apellidos" name="apellidos" aria-describedby="basic-addon1">
+      <span class="input-group-text" id="basic-addon1">Apellidos</span>
+    </div>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" aceholder="Username"  [(ngModel)] = "datosUser.direccion" name="direccion" aria-describedby="basic-addon1">
+      <span class="input-group-text" id="basic-addon1">Dirección</span>
+    </div>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" disabled aceholder="Username"  [(ngModel)] = "datosUser.email" name="email" aria-describedby="basic-addon1">
+      <span class="input-group-text" id="basic-addon1">Email</span>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">+34</span>
+      <input type="text" class="form-control" aceholder="Username"  [(ngModel)] = "datosUser.telefono" name="tlf" aria-describedby="basic-addon1">
+      <span class="input-group-text" id="basic-addon1">Teléfono</span>
+    </div>
+
+    <div class="form-check form-switch mb-3">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="changePassword" name="changePassword" role="switch" id="flexSwitchCheckDefault">
+      <label class="form-check-label" for="flexSwitchCheckDefault">¿Cambiar contraseña?</label>
+    </div>
+
+  <div *ngIf="changePassword">
+    <div class="input-group mb-3">
+      <input type="password" class="form-control" aceholder="Username" [(ngModel)] = "newPassword" name="password" aria-describedby="basic-addon1">
+      <span class="input-group-text" id="basic-addon1">Nueva contraseña</span>
+    </div>
+    <div class="input-group mb-3">
+      <input type="password" class="form-control" aceholder="Username" value="" [(ngModel)] = "confirmPassword" name="password" aria-describedby="basic-addon1">
+      <span class="input-group-text" id="basic-addon1">Confirmar contraseña</span>
+    </div>
+  </div>
+    <div class="input-group mb-3">
+      <button type="submit" class="btn btn-primary mb-3 " (click)="editarUsuario()">Editar</button>
+    </div>
+    <div class="error " *ngIf="error">
+      <div  class="alert alert-danger alert-dismissible fade show" role="error">
+          <p>Las contraseñas no coindicen</p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="errorFalse()"></button>
+      </div>
+    </div>
+
+    <div class="error " *ngIf="ok">
+      <div  class="alert alert-success alert-dismissible fade show" role="error">
+          <p>Datos cambiados</p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="okFalse()"></button>
+      </div>
+    </div>
+
+  </div>
+
+  
+
+</div>

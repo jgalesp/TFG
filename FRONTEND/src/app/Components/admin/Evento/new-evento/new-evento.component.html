@@ -1,0 +1,94 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+
+    <div class="row mt-5">
+
+        <div class="col-12 d-flex justify-content-center">
+
+
+            <form (submit)="submit()">
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" [(ngModel)] = "nombreEvento" name="nombreEvento" aria-describedby="basic-addon1">
+                    <span class="input-group-text" id="basic-addon1">Nombre del evento</span>
+                </div>
+
+                
+                    <div>
+                        <select class="form-select mb-3" [(ngModel)] = "dia" name="dia" aria-label="Default select example">
+                            <option value="" selected disabled>Seleccione un día...</option>
+                            <option value="Lunes">Lunes</option>
+                            <option value="Martes">Martes</option>
+                            <option value="Miércoles">Miércoles</option>
+                            <option value="Jueves">Jueves</option>
+                            <option value="Viernes">Viernes</option>
+                            <option value="Sábado">Sábado</option>
+                            <option value="Domingo">Domingo</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select class="form-select mb-3" [(ngModel)]="idPista" name="pista"  aria-label="Default select example">
+                            <option value="0" disabled>Seleccione una pista...</option>
+                            <option *ngFor="let opcion of pistas" [value]="opcion.idPista">{{ opcion.nombrePista }} - {{ opcion.deporte }}</option>
+                          </select>
+
+                    </div>
+             
+
+                <div>
+                    <select class="form-select mb-3" [(ngModel)] = "deporte" name="deporte" aria-label="Default select example">
+                        <option value="" selected disabled>Seleccione un deporte...</option>
+                        <option value="Futbol">Fútbol</option>
+                        <option value="Natacion">Natación</option>
+                        <option value="Padel">Pádel</option>
+                    </select>
+                </div>
+
+                <div>
+                    <select class="form-select mb-3" [(ngModel)] = "hora" name="hora" aria-label="Default select example">
+                        <option value="" disabled>Seleccione una hora...</option>
+                        <option value="17">17:00</option>
+                        <option value="18">18:00</option>
+                        <option value="19">19:00</option>
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="date" [min]="minDate" class="form-control" aria-label="With textarea" [(ngModel)] = "fechaInicio" name="descripcion">
+                    <span class="input-group-text">Fecha de inicio</span>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="date" [min]="minDate" class="form-control" aria-label="With textarea" [(ngModel)] = "fechaFin" name="descripcion">
+                    <span class="input-group-text">Fecha de fin</span>
+                </div>
+
+                
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary mb-3 classButton">Agregar</button>
+                </div>
+                
+
+            </form>
+
+        </div>
+
+       
+
+
+    </div>
+
+</div>
+
+<div class="error " *ngIf="error">
+    <div  class="alert alert-danger alert-dismissible fade show" role="error">
+        <p>Rellene todos los campos</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="errorFalse()"></button>
+    </div>
+</div>
+
+
+

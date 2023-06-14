@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+
+    <div class="row mt-5">
+
+        <div class="col-12 d-flex justify-content-center">
+
+
+            <form (submit)="submit()">
+
+                <div class="input-group mb-3">
+                    <select class="form-select" [(ngModel)]="idPista" name="pista"  aria-label="Default select example">
+                        <option value="0" disabled>Seleccione una pista...</option>
+                        <option *ngFor="let opcion of pistas" [value]="opcion.idPista">{{ opcion.nombrePista }} - {{ opcion.deporte }}</option>
+                      </select>
+                      <span class="input-group-text" id="basic-addon1">Pista</span>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" [(ngModel)] = "descripcion" name="descripcion" aria-describedby="basic-addon1">
+                    <span class="input-group-text" id="basic-addon1">Descripción</span>
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <select class="form-select" [(ngModel)]="nivel" name="nivel"  aria-label="Default select example">
+                        <option value="" disabled>Seleccione un nivel...</option>
+                        <option value="Bajo">Bajo</option>
+                        <option value="Medio">Medio</option>
+                        <option value="Alto">Alto</option>
+                      </select>
+                    <span class="input-group-text" id="basic-addon1">Nivel de la incidencia</span>
+                </div>
+                
+                <div class="input-group mb-3">
+                    <button type="submit" class="btn btn-primary mb-3 classButton" >Agregar</button>
+                </div>
+            </form>
+
+        </div>
+
+       
+
+
+    </div>
+
+</div>
+
+<div class="error " *ngIf="error">
+    <div  class="alert alert-danger alert-dismissible fade show" role="error">
+        <p>Rellene todos los campos</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="errorFalse()"></button>
+    </div>
+</div>

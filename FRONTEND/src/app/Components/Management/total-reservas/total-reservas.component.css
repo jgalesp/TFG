@@ -1,0 +1,14 @@
+@media (max-width: 425px) {
+    
+    .responsive{
+      
+      margin: 0%;
+      margin-left: 30%;
+      overflow: auto;
+      width: 30vh;
+      
+    }
+
+   
+  
+}

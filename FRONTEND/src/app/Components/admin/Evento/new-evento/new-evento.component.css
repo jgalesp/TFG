@@ -1,0 +1,15 @@
+.classButton{
+    background-color: rgb(243, 111, 63);
+    color: black;
+    border-color: black;
+  }
+  .classButton:hover{
+    background-color: rgb(243, 111, 63);
+    color: black;
+  }
+  .error{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1%;   
+  }

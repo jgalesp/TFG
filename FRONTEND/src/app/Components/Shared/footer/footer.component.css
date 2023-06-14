@@ -1,0 +1,44 @@
+.footer{
+ background-color: rgb(48, 47, 47); 
+}
+.sep{
+    border-bottom: 2px solid rgb(243, 111, 63);
+}
+
+.logos{
+    width: 30%;
+}
+
+.logoCentro{
+    width: 10%;
+}
+
+.texto{
+    color: white;
+    text-decoration: none;
+}
+
+.vh{
+    border:         none;
+    border-left:    1px solid hsla(200, 10%, 50%,100);
+    height:         20;
+    width:          1px;  
+}
+
+@media (max-width: 425px) {
+   
+    .logos{
+        width: 3vh;
+    }
+
+    .logoCentro{
+        width: 8vh;
+    }
+
+    .texto{
+        color: white;
+        text-decoration: none;
+        font-size: 1.3vh;
+    }
+}
+

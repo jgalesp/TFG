@@ -1,0 +1,70 @@
+
+
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center">
+        <div class="col justify-content-center text-center login ">
+           
+            <div class="card" *ngIf="!solicitudEnviada && !existeSolicitud">
+                <div class="card-body bodyLogin">
+
+                    <h2>Alta en el sistema</h2>
+
+                    <p>Para darse de alta en el sistema será necesario incluir el DNI, asociado a su cuenta de socio.</p>
+
+                    <form [formGroup]="miFormulario" (ngSubmit)="enviarSolicitud()">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="" formControlName="dni" pattern="^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]$" required>
+                            <span class="input-group-text" id="basic-addon2">DNI</span>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" placeholder="" formControlName="newPass"  aria-describedby="basic-addon1">
+                            <span class="input-group-text" id="basic-addon1">Nueva contraseña</span>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" placeholder="" formControlName="repeatPass"  aria-describedby="basic-addon1">
+                            <span class="input-group-text" id="basic-addon1">Repetir contraseña</span>
+                        </div>
+
+                        <button type="submit" class="btn botonLogin mt-3 mb-3 classButton" >Darse de alta</button>
+                    </form>
+
+                    <div class="error mt-1" *ngIf="error">
+                        <div *ngIf="miFormulario.get('newPass')?.value !== miFormulario.get('repeatPass')?.value || miFormulario.controls['dni'].hasError('pattern')"  class="alert alert-danger alert-dismissible fade show" role="error">
+                            <p *ngIf="miFormulario.controls['dni'].hasError('pattern')"> - El DNI tiene un formato incorrecto</p>
+                            <p *ngIf="miFormulario.get('newPass')?.value !== miFormulario.get('repeatPass')?.value"> - Las contraseñas no coindicen</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="errorFalse()"></button>
+                          </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div class="error mt-1" *ngIf="solicitudEnviada">
+                <div class="alert alert-success alert-dismissible fade show " role="success">
+                    <p>Solicitud realizada, espere a que el administrador acepte la petición de ingreso a la aplicación.</p>
+                    <a type="button" class="text-dark" (click)="goToLogin()">Volver al login</a>
+                    
+                  </div>
+            </div>
+
+            <div class="error mt-1" *ngIf="existeSolicitud">
+                <div class="alert alert-warning alert-dismissible fade show text-center" role="success">
+                    <p>Usted ya ha realizado una petición al sistema.</p>
+                    <a type="button" class="text-dark" (click)="goToLogin()">Volver al login</a>
+                   
+                  </div>
+            </div>
+
+
+
+            
+
+        </div>
+    </div>
+</div>
+
+
+

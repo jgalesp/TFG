@@ -1,0 +1,125 @@
+<app-navbar></app-navbar>
+
+
+<div class="container">
+ 
+    <h1 class="mt-5">ACTIVIDADES</h1>
+    
+    <div class="row d-flex justify-content-between" *ngIf="contador==0">
+
+      <div class="col mt-5">
+          <h3>No hay actividades</h3>
+      </div>
+      <div class="col mt-5 d-flex justify-content-end">
+          <button type="button" class="btn btn-success classButton" (click)="nuevoEvento()">Nueva actividad</button>
+      </div>
+
+  </div>
+  <div class="responsive">
+    <table *ngIf="contador>0" class="table table-hover text-center mt-5">
+        <thead>
+            <tr>
+              <th scope="col">Nombre del evento</th>
+              <th scope="col">Fecha Inicio</th>
+              <th scope="col">Fecha Fin</th>
+              <th scope="col">Día</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Deporte</th>
+              <th scope="col">Socios</th>
+              
+              <th scope="col"><button type="button" class="btn btn-success classButton" (click)="nuevoEvento()">Nueva actividad</button></th>
+            </tr>
+        </thead>
+
+        <tbody  *ngFor="let item of eventos ">
+
+            <tr  *ngIf="item.borrado==false">
+                
+                <td >{{item.nombreEvento}}</td>
+                <td>{{item.fechaInicio | date: 'dd/MM/yyyy'}}</td>
+                <td>{{item.fechaFin | date: 'dd/MM/yyyy'}}</td>
+                <td >{{item.dia}}</td>
+                <td >{{item.hora}}:00</td>
+                <td >{{item.deporte}}</td>
+                <td><button type="button" class="btn btn-success classButton" data-target="#exampleModal" (click)="getSocios(item.idEvento)" name="modal"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Consultar
+                   </button></td>
+                <td> <button class="btn btn-danger classButton" (click)="deleteEvento(item.idEvento)">Borrar</button></td>
+               
+            </tr>
+    
+
+        </tbody>
+    
+    
+    
+    </table>
+  </div>
+    
+
+
+
+
+    
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade mt-5" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">SOCIOS</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+            <h4 *ngIf="sociosEvento.length==0">No hay socios inscritos a la actividad</h4>
+
+            <div *ngIf="sociosEvento.length>0">
+            <b>Total de socios: {{sociosEvento.length}}</b>
+            <table  class="table table-striped text-center mt-5">
+                
+                <thead>
+                    <tr>
+                      <th scope="col">D.N.I</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Apellidos</th>
+                      <th scope="col">Correo Electrónico</th>
+                      <th scope="col">Teléfono</th>
+                      
+                    </tr>
+                </thead>
+        
+                <tbody class="table table-striped" *ngFor="let item of sociosEvento; let i=index">
+        
+                    <tr>
+                        
+                        <td>{{item.dni}}</td>
+                        <td>{{item.nombre}}</td>
+                        <td>{{item.apellidos}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.telefono}}</td>
+                        
+                    </tr>
+                </tbody>  
+            </table>
+         </div>  
+
+
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+
+  <div class="error " *ngIf="error">
+    <div  class="alert alert-danger alert-dismissible fade show" role="error">
+        <p>Esta actividad tiene socios asigandos</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="errorFalse()"></button>
+    </div>
+</div>
+
+
+

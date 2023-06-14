@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+ 
+
+    <h1 class="mt-5">INCIDENCIAS</h1>
+   
+    
+    <div class="row d-flex justify-content-between" *ngIf="incidencias.length==0">
+
+        <div class="col mt-5">
+            <h3>No hay incidencias</h3>
+        </div>
+        <div class="col mt-5 d-flex justify-content-end">
+            <button type="button" class="btn classButton" (click)="goToNewIncidencia()">Nueva incidencia</button>
+        </div>
+
+    </div>
+    
+    
+   <div *ngIf="incidencias.length>0" class="responsive">
+    <table  class="table table-hover text-center mt-5">
+        <thead>
+            <tr>
+              <th scope="col">Id Incidencia</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Nivel</th>
+              <th scope="col">Pista</th>
+              <th scope="col"><button type="button" class="btn btn-success classButton" (click)="goToNewIncidencia()">Nueva incidencia</button></th>    
+            </tr>
+        </thead>
+
+        <tbody  *ngFor="let item of incidencias | paginate: { itemsPerPage: 3, currentPage: p }; let i = index">
+            <span></span>
+            <tr>
+                
+                <td >{{item.idIncidencia}}</td>
+                <td>{{item.descripcion}}</td>
+                <td><select class="form-select" [(ngModel)]="estado" name="estado" (change)="changeSelect(item.idIncidencia)" aria-label="Default select example">
+                    <option [value]="estado" selected>{{ item.estado }}</option>
+                    <option *ngIf="item.estado=='Activo'" value="Completado">Completado</option>
+                    <option *ngIf="item.estado=='Completado'" value="Activo">Activo</option>
+                  </select></td>
+                <td>{{item.nivel}}</td>
+                <td>{{nombresPistas[i]}}</td>
+                <td><button type="button" class="btn btn-primary classButton" (click)="updateIncidencia(item.idIncidencia)">Editar</button></td>
+                
+            </tr>
+    
+        </tbody>
+               
+    </table>
+    <pagination-controls  previousLabel="Anterior"
+            nextLabel="Siguiente" (pageChange)="p = $event"></pagination-controls>
+
+        </div>
+
+
+</div>
+
+
+

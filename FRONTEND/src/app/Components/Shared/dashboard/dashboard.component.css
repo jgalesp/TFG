@@ -1,0 +1,30 @@
+.myCarousel{
+    height: 60vh;
+    width: 95vh;
+}
+
+.carta{
+    width: 30rem;
+    transition: 1s;
+}
+
+.carta:hover{
+    width: 40rem;
+}
+
+.contenedor{
+    width: 70%;
+}
+
+.imagen{
+    height: 60vh;
+    width: 95vh;
+}
+
+@media (max-width: 425px) {
+
+    .responsive{
+       display: none;
+    }
+
+}

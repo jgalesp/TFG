@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+ 
+    <h1 class="mt-5">SOLICITUDES</h1>
+    
+    <h2 class="mt-5" *ngIf="contador==0">No hay solicitudes</h2>
+   
+    <div class="responsive">
+        <table *ngIf="contador>0" class="table table-hover text-center mt-5">
+            <thead>
+                <tr>
+                <th scope="col">DNI</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Email</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody *ngFor="let item of solicitudes; let i=index">
+
+                <tr *ngIf="existeUsuario(socios, item.dni) && !item.estado && usuario!=undefined">
+                    
+                    <td>{{usuario.dni}}</td>
+                    <td>{{usuario.nombre}}</td>
+                    <td>{{usuario.apellidos}}</td>
+                    <td>{{usuario.direccion}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.telefono}}</td>
+
+                    <td><button class="btn btn-success classButton" (click)="darAlta(item)"> Dar de alta </button></td>
+                
+                </tr>
+
+                <tr *ngIf="!existeUsuario(socios, item.dni)">
+                
+                    <td>{{item.dni}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="btn btn-danger " (click)="cancelarAlta(item.dni)">Cancelar Alta</button></td>
+                
+                </tr>
+                
+
+            </tbody>
+        
+        
+        
+        </table>
+    </div>
+   
+
+
+
+
+    
+
+</div>
+

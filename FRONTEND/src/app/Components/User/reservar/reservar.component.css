@@ -1,0 +1,96 @@
+.container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .blue-box {
+    width:15vh;
+    height: 8vh;
+    background-color: rgb(225, 224, 224);
+    font-size: large;
+  }
+
+  .ocupado{
+    width: 10px;
+    height: 10px;
+    background-color: rgb(253, 79, 79);
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .disponible{
+    width: 10px;
+    height: 10px;
+    background-color: rgb(225, 224, 224);
+  }
+  
+  
+  .separator {
+    width: 3px;
+    height: 50px;
+    background-color: black;
+  }
+
+  .reservado{
+    background-color: rgb(253, 79, 79);
+    font-size: large;
+  }
+
+  .reservadoActividad{
+    background-color: rgb(55, 71, 219);
+    font-size: large;
+  }
+
+  .horarios{
+    height: 30px;
+  }
+
+  .reservarPista{
+    background-color: rgb(0, 0, 0);
+    color: white;
+    width: max-content;  
+  }
+
+  .borderClass{
+    border: 1px solid rgb(74, 74, 74);
+    background-color: rgb(54, 54, 54);
+    transition: 0.5s;
+  }
+
+  .borderClass:hover{
+    border: 1px solid rgb(243, 111, 63);
+    background-color: rgb(54, 54, 54);
+  }
+
+  .classButton{
+    background-color: rgb(243, 111, 63);
+    color: black;
+    border-color: black;
+  }
+  .classButton:hover{
+    background-color: rgb(243, 111, 63);
+    color: black;
+  }
+
+  @media (max-width: 425px) {
+    
+    .responsive{
+      margin-left: 5%;
+    }
+
+    .reservarPista{
+      background-color: rgb(0, 0, 0);
+      color: white;
+      width: 40vh;  
+    }
+
+   
+  
+}
+
+
+  

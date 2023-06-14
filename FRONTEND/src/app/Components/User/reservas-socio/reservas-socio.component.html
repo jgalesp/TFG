@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+ 
+    <h1 class="mt-5">MIS RESERVAS</h1>
+
+    <h3 class="mt-5" *ngIf="reservas.length==0">No has realizado ninguna reserva</h3>
+    
+    <div class="responsive">
+    <table *ngIf="reservas.length>0" class="table table-hover text-center mt-5">
+        <thead>
+            <tr>
+              <th scope="col">Nombre de la pista</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Deporte</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Fecha de Inicio</th>
+              <th scope="col">Hora de Inicio</th>
+              <th scope="col">Reserva Activa</th>
+             
+            </tr>
+        </thead>
+
+        <tbody  *ngFor="let item of reservas | paginate: { itemsPerPage: 3, currentPage: p }">
+
+            <tr>
+                
+                <td >{{item.pkPistasAlquiladas.pista.nombrePista}}</td>
+                <td>{{item.pkPistasAlquiladas.pista.descripcion}}</td>
+                <td>{{item.pkPistasAlquiladas.pista.deporte}}</td>
+                <td>{{item.pkPistasAlquiladas.pista.precio | currency:'EUR':'symbol-narrow'}} </td>
+                <td>{{item.pkPistasAlquiladas.fechaInicio | date: 'dd/MM/yyyy'}}</td>
+                <td>{{item.pkPistasAlquiladas.fechaInicio | date:'HH:mm' }}</td>
+                <td>{{item.activo?"Activo":"Con incidencias"}}</td>
+            
+            </tr>
+    
+
+        </tbody>
+        
+               
+    </table>
+    </div>
+    <pagination-controls *ngIf="reservas.length>0" previousLabel="Anterior"
+            nextLabel="Siguiente" (pageChange)="p = $event"></pagination-controls>
+
+    
+</div>

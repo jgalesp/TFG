@@ -1,0 +1,95 @@
+
+<app-navbar></app-navbar>
+
+  <div class="container d-flex justify-content-center">
+    <div class="row mt-5 ">
+      <form (submit)="cambiar()">
+        <div class="col-12">
+          <div class="row ">
+            <div class="col-12 col-sm-4 ">
+              <input type="date" [min]="minDate" class="form-control" [(ngModel)]="fecha" (change)="cambioFechas()"  name="fecha">
+            </div>
+            <div class="col-12 col-sm-6 ">
+              <select class="form-select" [(ngModel)]="idPista" name="pista"  (change)="cambioPista()" aria-label="Default select example">
+                <option value="0" disabled>Seleccione una pista...</option>
+                <option *ngFor="let opcion of pistas" [value]="opcion.idPista">{{ opcion.nombrePista }} - {{ opcion.deporte }}</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-2 ">
+              <button type="submit" class="btn btn-primary mb-3 classButton" [disabled]="fecha==null || fecha=='' || idPista==0">Consultar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>   
+  
+
+    
+
+  <div class="col p-5">
+
+    <div *ngIf="hayFecha && hayPista" class="container mt-5 mb-5 d-flex justify-content-center">
+
+      <div class="row me-5">
+        <div class="col">
+          <div class="row d-flex align-items-center">
+            <div class="ocupado col-1"></div>
+            <span class="col-6">Ocupado</span>
+          </div>
+
+          <div class="row d-flex align-items-center">
+            <div class="disponible col-1"></div>
+            <span class="col-6">Disponible</span>
+          </div>
+        </div>
+
+      </div>
+    
+    
+    
+
+      <div class="row responsive">
+
+        <div  type="button" id="15" data-hora="15" class="blue-box d-flex align-items-center justify-content-center mx-3" (click)="reservar($event)" >15:00</div>
+        
+        <div  type="button" id="16" data-hora="16" class="blue-box d-flex align-items-center justify-content-center mx-3" (click)="reservar($event)">16:00</div>
+        
+        <div  type="button" id="17" data-hora="17" class="blue-box d-flex align-items-center justify-content-center mx-3" (click)="reservar($event)">17:00</div>
+        
+        <div  type="button" id="18" data-hora="18" class="blue-box d-flex align-items-center justify-content-center mx-3" (click)="reservar($event)">18:00</div>
+        
+        <div  type="button" id="19" data-hora="19" class="blue-box d-flex align-items-center justify-content-center mx-3" (click)="reservar($event)">19:00</div>
+        
+        <div  type="button" id="20" data-hora="20" class="blue-box d-flex align-items-center justify-content-center mx-3" (click)="reservar($event)">20:00</div>
+        
+      </div>
+    </div>
+</div>
+
+          
+      
+
+
+
+      
+      <div *ngIf="hasClass" class="container mb-5 fade-in reservarPista ">
+
+        <div class="row d-flex justify-content-center ">
+
+          <div class="col-12 my-3 text-center " ><div class="borderClass">{{descripcionPista }}</div></div>
+          <div class="col-6 my-3 text-center" ><div class="borderClass">{{fechaInicio | date:'dd/MM/yyyy'}}</div></div>
+          <div class="col-6 my-3 text-center " ><div class="borderClass">{{fechaInicio | date:'HH:mm'}}</div></div>
+          
+          <div class="col-6 my-2 text-center" ><button type="button" class="btn borderClass classButton " (click)="reservarTotal()">Establecer mantenimiento</button></div>
+
+        </div>
+
+      </div>
+
+  
+
+
+
+
+
